@@ -1,0 +1,34 @@
+# CMake / Ninja
+/build/
+/cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+build.ninja
+.ninja_deps
+.ninja_log
+compile_commands.json
+CMakeUserPresets.json
+
+# Firmware outputs
+*.elf
+*.map
+*.bin
+*.hex
+*.list
+*.su
+*.cyclo
+
+# STM32CubeMX local cache
+.mxproject
+
+# IDE and OS
+.vscode/
+.settings/
+.idea/
+*.launch
+Debug/
+Release/
+Thumbs.db
+Desktop.ini
+.DS_Store

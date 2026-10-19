@@ -1,0 +1,28 @@
+name: Firmware
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        # Official stable release: https://github.com/actions/checkout/releases/tag/v7.0.1
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the Arm GNU toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends gcc-arm-none-eabi libnewlib-arm-none-eabi cmake ninja-build
+      - name: Configure and build the Debug firmware
+        run: |
+          cmake --preset Debug
+          cmake --build --preset Debug --parallel
